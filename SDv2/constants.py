@@ -1,0 +1,10 @@
+# constants
+LEN_TOKENIZER_VOCAB = 49408
+EMBEDDING_DIM = 768
+IMAGE_SIZE = 512
+DDIM_ETA = 0
+DDIM_STEPS = 50
+
+STARTING_CONCEPT = ""
+
+# Stable Diffusion v2.1 constants
