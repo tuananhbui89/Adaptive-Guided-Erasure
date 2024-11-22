@@ -7,7 +7,7 @@ CUDA_VISIBLE_DEVICES=1 python eval-scripts/generate-images.py \
     --save_path 'evaluation_massive' \
     --num_samples 1 \
     --from_case 0 \
-    --to_case 5000 &> logs/coco_30k_gumbel_v7_from_0_to_5000.log &
+    --to_case 5000 &> logs/coco_30k_gumbel_from_0_to_5000.log &
 
 CUDA_VISIBLE_DEVICES=1 python eval-scripts/generate-images.py \
     --models_path=models \
@@ -16,7 +16,7 @@ CUDA_VISIBLE_DEVICES=1 python eval-scripts/generate-images.py \
     --save_path 'evaluation_massive' \
     --num_samples 1 \
     --from_case 5000 \
-    --to_case 10000 &> logs/coco_30k_gumbel_v7_from_5000_to_10000.log &
+    --to_case 10000 &> logs/coco_30k_gumbel_from_5000_to_10000.log &
 
 CUDA_VISIBLE_DEVICES=2 python eval-scripts/generate-images.py \
     --models_path=models \
@@ -25,7 +25,7 @@ CUDA_VISIBLE_DEVICES=2 python eval-scripts/generate-images.py \
     --save_path 'evaluation_massive' \
     --num_samples 1 \
     --from_case 10000 \
-    --to_case 15000 &> logs/coco_30k_gumbel_v7_from_10000_to_15000.log &
+    --to_case 15000 &> logs/coco_30k_gumbel_from_10000_to_15000.log &
 
 CUDA_VISIBLE_DEVICES=2 python eval-scripts/generate-images.py \
     --models_path=models \
@@ -34,7 +34,7 @@ CUDA_VISIBLE_DEVICES=2 python eval-scripts/generate-images.py \
     --save_path 'evaluation_massive' \
     --num_samples 1 \
     --from_case 15000 \
-    --to_case 20000 &> logs/coco_30k_gumbel_v7_from_15000_to_20000.log &
+    --to_case 20000 &> logs/coco_30k_gumbel_from_15000_to_20000.log &
 
 CUDA_VISIBLE_DEVICES=1 python eval-scripts/generate-images.py \
     --models_path=models \
@@ -43,7 +43,7 @@ CUDA_VISIBLE_DEVICES=1 python eval-scripts/generate-images.py \
     --save_path 'evaluation_massive' \
     --num_samples 1 \
     --from_case 20000 \
-    --to_case 25000 &> logs/coco_30k_gumbel_v7_from_20000_to_25000.log &
+    --to_case 25000 &> logs/coco_30k_gumbel_from_20000_to_25000.log &
 
 CUDA_VISIBLE_DEVICES=1 python eval-scripts/generate-images.py \
     --models_path=models \
@@ -52,4 +52,4 @@ CUDA_VISIBLE_DEVICES=1 python eval-scripts/generate-images.py \
     --save_path 'evaluation_massive' \
     --num_samples 1 \
     --from_case 25000 \
-    --to_case 30000 &> logs/coco_30k_gumbel_v7_from_25000_to_30000.log &
+    --to_case 30000 &> logs/coco_30k_gumbel_from_25000_to_30000.log &
