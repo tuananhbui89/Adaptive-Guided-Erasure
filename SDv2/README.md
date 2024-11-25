@@ -38,4 +38,11 @@ wget https://huggingface.co/stabilityai/stable-diffusion-2-1-base/resolve/main/v
 - File `ldm/modules/encoders/modules.py`, class `FrozenOpenCLIPEmbedder`, method `__init__`: get tokenizer
 - File `ldm/models/diffusion/ddim.py`, class `DDIMSampler`, method `sample`: add `till_T` and `t_start` parameters as similar to version 1
 
+## Running the code 
+
+We provide training and evaluation scripts for the experiments in the paper in the `train_scripts` folder.
+
+To produce the results in Section 3 of the paper (i.e., Concept Graph on NetFive dataset), run the `train_scripts/run_target_empty.sh` script.
+
+To produce additional results on ImageNette, run the `train_scripts/imagenette_age.sh` and `train_scripts/imagenette_baselines.sh` scripts.
 
