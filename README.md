@@ -1,6 +1,35 @@
+<div align="center">
+
 # Adaptive Guided Erasure
 
-Code for the paper *"Optimal Targets for Concept Erasure in Diffusion Models and Where To Find Them"*.
+**"Fantastic Targets for Concept Erasure in Diffusion Models and Where To Find Them"** (ICLR 2025)
+
+[[📄 Paper]](https://arxiv.org/abs/2501.18950)
+
+Contact: tuananh.bui@monash.edu
+
+<div align="left">
+
+**(Shameless plug :grin:) Our other papers on Concept Erasing/Unlearning:**
+
+> [**Fantastic Targets for Concept Erasure in Diffusion Models and Where to Find Them**](https://www.dropbox.com/scl/fi/pf2190qpfpiuo05mhcqmi/Adaptive-Guide-Erasure.pdf?rlkey=63s7ruwqxhrdsc4i603gjmsri&st=y79mr0ej&dl=0),       
+> Tuan-Anh Bui, Trang Vu, Long Vuong, Trung Le, Paul Montague, Tamas Abraham, Dinh Phung       
+> *ICLR 2025 ([arXiv 2501.18950](https://arxiv.org/abs/2501.18950))*
+
+> [**Erasing Undesirable Concepts in Diffusion Models with Adversarial Preservation**](https://arxiv.org/abs/2410.15618),       
+> Tuan-Anh Bui, Long Vuong, Khanh Doan, Trung Le, Paul Montague, Tamas Abraham, Dinh Phung       
+> *NeurIPS 2024 ([arXiv 2410.15618](https://arxiv.org/abs/2410.15618))*
+
+> [**Removing Undesirable Concepts in Text-to-Image Generative Models with Learnable Prompts**](https://arxiv.org/abs/2403.12326),       
+> Tuan-Anh Bui, Khanh Doan, Trung Le, Paul Montague, Tamas Abraham, Dinh Phung       
+> *Preprint ([arXiv 2403.12326](https://arxiv.org/abs/2403.12326))*
+
+---
+
+## Abstract
+
+Concept erasure has emerged as a promising technique for mitigating the risk of harmful content generation in diffusion models by selectively unlearning undesirable concepts. The common principle of previous works to remove a specific concept is to map it to a fixed generic concept, such as a neutral concept or just an empty text prompt. In this paper, we demonstrate that this fixed-target strategy is suboptimal, as it fails to account for the impact of erasing one concept on the others. To address this limitation, we model the concept space as a graph and empirically analyze the effects of erasing one concept on the remaining concepts. Our analysis uncovers intriguing geometric properties of the concept space, where the influence of erasing a concept is confined to a local region. Building on this insight, we propose the Adaptive Guided Erasure (AGE) method, which \emph{dynamically} selects optimal target concepts tailored to each undesirable concept, minimizing unintended side effects. Experimental results show that AGE significantly outperforms state-of-the-art erasure methods on preserving unrelated concepts while maintaining effective erasure performance.
+
 
 ## Installation Guide
 
@@ -27,6 +56,7 @@ pip install --upgrade nudenet
 pip install lpips
 ```
 ****
+
 ## Usage
 
 We provide training and evaluation scripts for the experiments in the paper in the `scripts` folder.
@@ -90,6 +120,34 @@ Specifically, we followed these steps:
 3. Conducted the erasure process with the `attn.yaml` configuration file.
 4. Generated and stored images with the erased concepts in the `evaluation_folder/exps_attn` directory.
 ****
+
+## Citation
+
+If you find this work useful in your research, please consider citing our paper (or our other papers :grin:):
+
+```bibtex
+@article{bui2024erasing,
+  title={Erasing Undesirable Concepts in Diffusion Models with Adversarial Preservation},
+  author={Bui, Anh and Vuong, Long and Doan, Khanh and Le, Trung and Montague, Paul and Abraham, Tamas and Phung, Dinh},
+  booktitle={NeurIPS},
+  year={2024}
+}
+
+@article{bui2025fantastic,
+  title={Fantastic Targets for Concept Erasure in Diffusion Models and Where to Find Them},
+  author={Bui, Anh and Vu, Trang and Vuong, Long and Le, Trung and Montague, Paul and Abraham, Tamas and Phung, Dinh},
+  journal={ICLR},
+  year={2025}
+}
+
+@article{bui2024removing,
+  title={Removing Undesirable Concepts in Text-to-Image Generative Models with Learnable Prompts},
+  author={Bui, Anh and Doan, Khanh and Le, Trung and Montague, Paul and Abraham, Tamas and Phung, Dinh},
+  journal={arXiv preprint arXiv:2403.12326},
+  year={2024}
+}
+```
+
 ## References
 
 This repository is based on the repository [Erasing Concepts from Diffusion Models](https://github.com/rohitgandikota/erasing)
