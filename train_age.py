@@ -129,7 +129,7 @@ def save_to_dict(var, name, dict):
 
 
 
-def train(prompt, train_method, start_guidance, negative_guidance, iterations, lr, config_path, ckpt_path, diffusers_config_path, devices, seperator=None, image_size=512, ddim_steps=50, args=None):
+def train_age(prompt, train_method, start_guidance, negative_guidance, iterations, lr, config_path, ckpt_path, diffusers_config_path, devices, seperator=None, image_size=512, ddim_steps=50, args=None):
     '''
     Function to train diffusion models to erase concepts from model weights
 
@@ -283,6 +283,9 @@ def train(prompt, train_method, start_guidance, negative_guidance, iterations, l
     
     if not os.path.exists('models/embedding_matrix_array_Imagenet.pt'):
         save_embedding_matrix(model, model_name='SD-v1-4', save_mode='array', vocab='Imagenet')
+    
+    if not os.path.exists('models/embedding_matrix_dict_Imagenet.pt'):
+        save_embedding_matrix(model, model_name='SD-v1-4', save_mode='dict', vocab='Imagenet')
 
 
     # Search the closest tokens in the vocabulary for each erased word, using the similarity matrix
@@ -546,4 +549,4 @@ if __name__ == '__main__':
     image_size = args.image_size
     ddim_steps = args.ddim_steps
 
-    train(prompt=prompt, train_method=train_method, start_guidance=start_guidance, negative_guidance=negative_guidance, iterations=iterations, lr=lr, config_path=config_path, ckpt_path=ckpt_path, diffusers_config_path=diffusers_config_path, devices=devices, seperator=seperator, image_size=image_size, ddim_steps=ddim_steps, args=args)
+    train_age(prompt=prompt, train_method=train_method, start_guidance=start_guidance, negative_guidance=negative_guidance, iterations=iterations, lr=lr, config_path=config_path, ckpt_path=ckpt_path, diffusers_config_path=diffusers_config_path, devices=devices, seperator=seperator, image_size=image_size, ddim_steps=ddim_steps, args=args)
