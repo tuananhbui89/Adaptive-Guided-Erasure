@@ -22,7 +22,7 @@ from convertModels import savemodelDiffusers
 from PIL import Image
 from torch.autograd import Variable
 from utils_exp import get_prompt, sanitize_filename, str2bool
-from gen_embedding_matrix import learn_k_means_from_input_embedding, learn_k_means_from_output, save_embedding_matrix, search_closest_tokens, retrieve_embedding_token
+from gen_embedding_matrix import learn_k_means_from_input_embedding, save_embedding_matrix, search_closest_tokens
 
 import set_threads
 

@@ -92,6 +92,57 @@ def retrieve_embedding_token(model_name, query_token):
         if query_token in embedding_matrix:
             return embedding_matrix[query_token]
 
+def my_kmean(sorted_sim_dict, num_centers, compute_mode):
+    if compute_mode == 'numpy':
+        from sklearn.cluster import KMeans
+        import numpy as np
+        similarities = np.array([sorted_sim_dict[token].item() for token in sorted_sim_dict])
+        similarities = similarities.reshape(-1, 1)
+        kmeans = KMeans(n_clusters=num_centers, random_state=0).fit(similarities)
+        print(f"Cluster centers: {kmeans.cluster_centers_}")
+        print(f"Cluster labels: {kmeans.labels_}")
+        cluster_centers = kmeans.cluster_centers_
+    elif compute_mode == 'torch':
+        from torch_kmeans import KMeans
+        similarities = torch.stack([sorted_sim_dict[token] for token in sorted_sim_dict])
+        similarities = torch.unsqueeze(similarities, dim=0)
+        similarities = torch.unsqueeze(similarities, dim=2) # [1, N, 1]
+        print('similarities shape:', similarities.shape)
+        kmeans = KMeans(n_clusters=num_centers).fit(similarities)
+        import pdb; pdb.set_trace()
+        print(f"Cluster centers: {kmeans.cluster_centers}")
+        print(f"Cluster labels: {kmeans.labels}")
+        cluster_centers = kmeans.cluster_centers
+
+    # find the closest token to each cluster center
+    cluster_dict = {}
+    for i, center in enumerate(cluster_centers):
+        closest_token = None
+        closest_similarity = -float('inf')
+        for j, token in enumerate(sorted_sim_dict):
+            similarity = sorted_sim_dict[token].item()
+            if abs(similarity - center) < abs(closest_similarity - center):
+                closest_similarity = similarity
+                closest_token = token
+        cluster_dict[closest_token] = (closest_token, closest_similarity, i)
+    print(f"Cluster dictionary: {cluster_dict}")
+
+    return cluster_dict
+
+@torch.no_grad()
+def learn_k_means_from_input_embedding(sim_dict, num_centers=5, compute_mode='numpy'):
+    """
+    Given a model, a set of tokens, and a concept, learn k-means clustering on the search_closest_tokens's output
+    """
+    if num_centers <= 0:
+        print(f"Number of centers should be greater than 0. Returning the tokens themselves.")
+        return list(sim_dict.keys())
+    if len(list(sim_dict.keys())) <= num_centers:
+        print(f"Number of tokens is less than the number of centers. Returning the tokens themselves.")
+        return list(sim_dict.keys())
+
+    return list(my_kmean(sim_dict, num_centers, compute_mode).keys())
+
 @torch.no_grad()
 def search_closest_tokens(concept, model, k=5, reshape=True, sim='cosine', model_name='SD-v1-4'):
     """
