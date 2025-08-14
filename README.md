@@ -42,20 +42,13 @@ wget https://huggingface.co/CompVis/stable-diffusion-v1-4/blob/main/unet/config.
 mv config.json models/erase/
 ```
 
-Requirements:
+Create new environment and install the required dependencies:
 
 ```bash
-pip install omegaconf
-pip install pytorch-lightning==1.6.5
-pip install taming-transformers-rom1504
-pip install kornia==0.5.11
-pip install git+https://github.com/openai/CLIP.git
-pip install diffusers==0.21.4
-pip install -U transformers
-pip install --upgrade nudenet
-pip install lpips
+conda create -n age python=3.11
+conda activate age
+pip install -r requirements.txt
 ```
-****
 
 ## Usage
 

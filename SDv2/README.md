@@ -7,11 +7,9 @@ This repository contains the code for the project "Adaptive Guided Erasure" with
 To install the required dependencies, run the following command:
 
 ```bash
+conda create -n age_sdv2 python=3.11
+conda activate age_sdv2
 pip install -r requirements.txt
-pip install torch==1.12.1+cu116 torchvision==0.13.1+cu116 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu116
-pip install transformers==4.30.2
-pip install diffusers==0.21.4
-pip install ftfy==6.1.1
 ```
 
 Clone and copy the `ldm` repository to the root of this repository:

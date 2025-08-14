@@ -1,0 +1,10 @@
+omegaconf==2.3.0
+pytorch-lightning==1.6.5
+taming-transformers-rom1504
+kornia==0.5.11
+git+https://github.com/openai/CLIP.git
+diffusers==0.21.4
+transformers==4.48.3
+nudenet==3.0.8
+lpips==0.1.4
+torchmetrics==0.6.0
